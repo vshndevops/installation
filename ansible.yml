@@ -1,0 +1,22 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks: 
+
+   - name: install java on slave
+     script: java.sh
+  
+   - name: install docker on slave
+     script: docker.sh
+
+- hosts: localhost
+  connection: local
+  tasks:
+
+   
+    - name: install java on master
+      script: java.sh
+
+   
+    - name: install jenkins on master
+      script: jenkins.sh
